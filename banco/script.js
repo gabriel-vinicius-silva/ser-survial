@@ -9,6 +9,12 @@ const users = {
         password: "abcdef",
         balance: 75000,
         taxesDue: 300
+    },
+    // Novo usuário H20
+    "H20": {
+        password: "H202564", // Senha de H20
+        balance: 50000, // Saldo inicial (pode ser ajustado conforme necessário)
+        taxesDue: 0 // Nenhum imposto devido inicialmente
     }
 };
 
