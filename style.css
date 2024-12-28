@@ -1,0 +1,126 @@
+/* Estilos gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #121212; /* fundo escuro */
+    color: #e0e0e0;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Cabeçalho */
+header {
+    margin-bottom: 30px;
+}
+
+header h1 {
+    color: #00ff99; /* Verde neon */
+    font-size: 3.5em;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+header .highlight {
+    color: #ffcc00; /* Detalhe dourado */
+}
+
+header .subtitle {
+    color: #b0b0b0;
+    font-size: 1.3em;
+}
+
+/* Seção de informações do servidor */
+.server-info {
+    background-color: #1c1c1c;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 255, 153, 0.2);
+}
+
+.server-info h2 {
+    color: #00ff99;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.info-box {
+    background-color: #333333;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(0, 255, 153, 0.2);
+}
+
+.info-box p {
+    font-size: 1.2em;
+    color: #e0e0e0;
+}
+
+.info-box p strong {
+    color: #00ff99;
+}
+
+/* Seção de Banco */
+.bank-link {
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #1c1c1c;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 255, 153, 0.2);
+}
+
+.bank-link h2 {
+    color: #00ff99;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.bank-link p {
+    color: #e0e0e0;
+    font-size: 1.3em;
+}
+
+.bank-button {
+    color: #121212;
+    background-color: #00ff99;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.3em;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 255, 153, 0.3);
+}
+
+.bank-button:hover {
+    background-color: #00cc66;
+    box-shadow: 0 2px 10px rgba(0, 255, 153, 0.5);
+}
+
+/* Rodapé */
+footer {
+    margin-top: 40px;
+    color: #e0e0e0;
+    font-size: 1.1em;
+}
+
+/* Efeitos de animação */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.container {
+    animation: fadeIn 1.5s ease-in-out;
+}

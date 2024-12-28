@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco SER SURVIVAL</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Banco SER SURVIVAL</h1>
+    </header>
+    <main>
+        <section class="login-section">
+            <h2>Acesse sua conta</h2>
+            <form id="login-form">
+                <label for="username">Usuário:</label>
+                <input type="text" id="username" placeholder="Digite seu nome" required>
+                <label for="password">Senha:</label>
+                <input type="password" id="password" placeholder="Digite sua senha" required>
+                <button type="submit">Entrar</button>
+            </form>
+            <p id="login-message"></p>
+        </section>
+        <section id="account-info" class="hidden">
+            <h2>Informações da Conta</h2>
+            <p id="welcome-message"></p>
+            <p>Saldo: <span id="balance"></span></p>
+            <button id="pay-taxes">Pagar Impostos</button>
+            <p id="transaction-message"></p>
+        </section>
+    </main>
+    <footer>
+        <p>© 2024 Banco SER SURVIVAL</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
