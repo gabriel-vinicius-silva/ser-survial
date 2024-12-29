@@ -1,20 +1,21 @@
-// Simples base de dados dos usuários
+// Base de dados dos usuários com H20 e GABRIEL
 const users = {
-    "VTZIN": {
-        password: "123456",
-        balance: 100000,
-        taxesDue: 200
-    },
     "GABRIEL": {
         password: "abcdef",
         balance: 75000,
-        taxesDue: 300
+        taxesDue: 300,
+        creditLimit: 200,
+        debitLimit: 200,
+        loan: 0
     },
-    // Novo usuário H20
     "H20": {
-        password: "H202564", // Senha de H20
-        balance: 50000, // Saldo inicial (pode ser ajustado conforme necessário)
-        taxesDue: 0 // Nenhum imposto devido inicialmente
+        password: "H202564",
+        balance: 10, // Saldo inicial de 10 VERSES
+        taxesDue: 0,
+        creditLimit: 200,
+        debitLimit: 200,
+        loan: 0,
+        maxLoan: 20 // Empréstimo máximo de 20 VERSES
     }
 };
 
@@ -26,6 +27,8 @@ const welcomeMessage = document.getElementById("welcome-message");
 const balanceDisplay = document.getElementById("balance");
 const payTaxesButton = document.getElementById("pay-taxes");
 const transactionMessage = document.getElementById("transaction-message");
+const loanButton = document.getElementById("loan-button");
+const loanAmountInput = document.getElementById("loan-amount");
 
 // Variável para armazenar o usuário atual
 let currentUser = null;
@@ -36,6 +39,7 @@ loginForm.addEventListener("submit", (e) => {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
+    // Verifica se o nome de usuário e a senha estão corretos
     if (users[username] && users[username].password === password) {
         currentUser = users[username];
         loginMessage.textContent = "Login bem-sucedido!";
@@ -43,7 +47,7 @@ loginForm.addEventListener("submit", (e) => {
 
         // Exibir informações da conta
         welcomeMessage.textContent = `Bem-vindo, ${username}!`;
-        balanceDisplay.textContent = `R$ ${currentUser.balance}`;
+        balanceDisplay.textContent = `Saldo: R$ ${currentUser.balance} | Empréstimo: R$ ${currentUser.loan}`;
         accountInfo.classList.remove("hidden");
         loginForm.classList.add("hidden");
     } else {
@@ -60,7 +64,7 @@ payTaxesButton.addEventListener("click", () => {
             currentUser.taxesDue = 0;
             transactionMessage.textContent = "Impostos pagos com sucesso!";
             transactionMessage.style.color = "green";
-            balanceDisplay.textContent = `R$ ${currentUser.balance}`;
+            balanceDisplay.textContent = `Saldo: R$ ${currentUser.balance} | Empréstimo: R$ ${currentUser.loan}`;
         } else {
             transactionMessage.textContent = "Saldo insuficiente para pagar os impostos.";
             transactionMessage.style.color = "red";
@@ -68,5 +72,24 @@ payTaxesButton.addEventListener("click", () => {
     } else {
         transactionMessage.textContent = "Nenhum imposto devido.";
         transactionMessage.style.color = "blue";
+    }
+});
+
+// Função para pegar empréstimo
+loanButton.addEventListener("click", () => {
+    const loanAmount = parseFloat(loanAmountInput.value);
+
+    if (loanAmount > 0 && loanAmount <= currentUser.maxLoan) {
+        currentUser.loan += loanAmount;
+        currentUser.balance += loanAmount;
+        transactionMessage.textContent = `Empréstimo de R$ ${loanAmount} aprovado!`;
+        transactionMessage.style.color = "green";
+        balanceDisplay.textContent = `Saldo: R$ ${currentUser.balance} | Empréstimo: R$ ${currentUser.loan}`;
+    } else if (loanAmount > currentUser.maxLoan) {
+        transactionMessage.textContent = `Empréstimo máximo é de R$ ${currentUser.maxLoan}.`;
+        transactionMessage.style.color = "red";
+    } else {
+        transactionMessage.textContent = "Valor de empréstimo inválido!";
+        transactionMessage.style.color = "red";
     }
 });
